@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports: 
+      - "8080:8080" 
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home"
+    networks:
+      - net
+  db_host:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=bishnu712"
+    volumes:
+      - "$PWD/db_data:/var/lib/mysql"
+    networks:
+      - net
+networks:
+  net:
+
